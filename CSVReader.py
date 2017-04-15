@@ -42,7 +42,7 @@ def main():
     final_string += str(category_count - 2)
     final_string += '\n'
     for row in csv:
-        final_string += parse_student(row, cat)
+        final_string += parse_student(row, categories)
 
     text_file = open("output.txt", "w")
     text_file.write(final_string)

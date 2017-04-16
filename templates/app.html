@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script src="../static/utils.js"></script>
+    <div style="overflow: hidden; white-space: nowrap" align="center">
+        <h1>Duck Duck Groups</h1>
+        <h2>Creating Project Groups Since 2017</h2>
+    </div>
+
+    <div id="sliders" style="overflow: hidden; white-space: nowrap" align="center">
+        <input type="range" min="0" max="10" value="0" step="1" onchange="showValue(this.value)" />
+        <span id="range">0</span>
+        <script type="text/javascript">
+        function showValue(newValue)
+        {
+        	document.getElementById("range").innerHTML=newValue;
+        }
+        </script>
+    </div>
+
+    <div id="menuBar" style="overflow: hidden; white-space: nowrap" align="center">
+        <button id="uploadButton">Hey Homie! Click here to Upload CSV File!</button>
+
+    </div>
+    <div id="generateTeams" style="display: none;"align="center">
+
+        <p>Select CSV File</p>
+        <input type="file" id="csvFileEntry"/>
+        <button id="generateGroupsButton">Generate Groups, Dawg</button>
+        <div id="groupOutputArea"></div>
+    </div>
+
+    <div id="errorDisplay" align="center">
+        <p id="invalidFileExtensionError" class = "error" style="display: none; color: red">Please select a CSV file</p>
+    </div>
+
+</body>
+</html>

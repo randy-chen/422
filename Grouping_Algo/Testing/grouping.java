@@ -55,11 +55,29 @@ public class grouping{
                 }
             }
         }
+        if(listOfPeople.size() > 0){
+            if(listOfPeople.size() >= 3){
+                ArrayList<String> group = new ArrayList<>();
+                group.add(listOfPeople.get(0).getName());
+                group.add(listOfPeople.get(1).getName());
+                group.add(listOfPeople.get(2).getName());
+                Groups.add(group);
+                listOfPeople.remove(0);
+                listOfPeople.remove(0);
+                listOfPeople.remove(0);
+            }else{
+                for(int i = 0; i < Groups.size(); i++){
+                    if(Groups.get(i).size() < 4){
+                        Groups.get(i).add(listOfPeople.get(0).getName());
+                        listOfPeople.remove(0);
+                    }
+                }
+            }
+        }
 
         for(int i = 0; i < Groups.size(); i++){
-            System.out.println(Groups.get(i).toString());
-            System.out.println(i);
+            System.out.print(Groups.get(i).toString());
         }
-        System.out.println("HAHAHAHAHAHAHAHAHA" + Groups.size());
+        System.out.println("\n");
     }
 }

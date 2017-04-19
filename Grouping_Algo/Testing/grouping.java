@@ -46,8 +46,8 @@ public class grouping{
                         group.add(listOfPeople.get(k).getName());
                         Groups.add(group);
                         listOfPeople.remove(i);
-                        listOfPeople.remove(j);
-                        listOfPeople.remove(k);
+                        listOfPeople.remove(j-1);
+                        listOfPeople.remove(k-2);
                         if(listOfPeople.size() < 3){
                             break;
                         }

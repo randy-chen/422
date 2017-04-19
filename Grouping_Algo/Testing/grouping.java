@@ -32,14 +32,11 @@ public class grouping{
             }
             listOfPeople.add(Person);
         }
-        for(person item: listOfPeople){
-            System.out.println(item.getName());
-        }
         ArrayList<ArrayList<String>> Groups = new ArrayList<>();
         for(int i = 0; i < listOfPeople.size(); i++){
             for(int j = i+1; j < listOfPeople.size(); j++){
                 for(int k = j+1; k <listOfPeople.size(); k++){
-                    if(canGroup(listOfPeople.get(i),listOfPeople.get(j),listOfPeople.get(k),0,0)){
+                    if(canGroup(listOfPeople.get(i),listOfPeople.get(j),listOfPeople.get(k),1,0)){
                         ArrayList<String> group = new ArrayList<>();
                         group.add(listOfPeople.get(i).getName());
                         group.add(listOfPeople.get(j).getName());
@@ -55,7 +52,7 @@ public class grouping{
                 }
             }
         }
-        if(listOfPeople.size() > 0){
+        while(listOfPeople.size() > 0){
             if(listOfPeople.size() >= 3){
                 ArrayList<String> group = new ArrayList<>();
                 group.add(listOfPeople.get(0).getName());
@@ -70,14 +67,16 @@ public class grouping{
                     if(Groups.get(i).size() < 4){
                         Groups.get(i).add(listOfPeople.get(0).getName());
                         listOfPeople.remove(0);
+                        if(listOfPeople.size() == 0){
+                            i = Groups.size();
+                        }
                     }
                 }
             }
         }
 
         for(int i = 0; i < Groups.size(); i++){
-            System.out.print(Groups.get(i).toString());
+            System.out.println(Groups.get(i).toString());
         }
-        System.out.println("\n");
     }
 }

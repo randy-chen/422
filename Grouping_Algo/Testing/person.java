@@ -29,4 +29,13 @@ public class person{
         return attributes.get(i);
     }
 
+    public int totalAvailability(){
+        int sum = 0;
+        for(int i = 0; i < attributes.size(); i++){
+            for(int j = 0; j < attributes.get(i).size(); j++){
+                sum++;
+            }
+        }
+        return sum;
+    }
 }

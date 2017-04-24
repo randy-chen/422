@@ -21,34 +21,53 @@ public class grouping{
     }
 
     public static void main(String [] args){
+        int MAX_WEIGHT = 5;
         int numAttr = Integer.parseInt(scanner.nextLine());
         ArrayList<person> listOfPeople = new ArrayList<person>();
         while(scanner.hasNextLine()){
             String name = scanner.nextLine();
             person Person = new person(name);
             for(int i = 0; i < numAttr; i++){
-                ArrayList<String> list = new ArrayList<String>(Arrays.asList(scanner.nextLine().split(" , ")));
+                ArrayList<String> list = new ArrayList<String>(Arrays.asList(scanner.nextLine().split(",")));
                 Person.addAttribute(list);
             }
             listOfPeople.add(Person);
         }
+        Collections.sort(listOfPeople, new Comparator<person>() {
+                @Override
+                public int compare(person person1, person person2){
+                    return (person1.totalAvailability() - person2.totalAvailability());
+                }
+        });
+        
         ArrayList<ArrayList<String>> Groups = new ArrayList<>();
         for(int i = 0; i < listOfPeople.size(); i++){
             for(int j = i+1; j < listOfPeople.size(); j++){
                 for(int k = j+1; k <listOfPeople.size(); k++){
-                    if(canGroup(listOfPeople.get(i),listOfPeople.get(j),listOfPeople.get(k),1,0)){
-                        ArrayList<String> group = new ArrayList<>();
-                        group.add(listOfPeople.get(i).getName());
-                        group.add(listOfPeople.get(j).getName());
-                        group.add(listOfPeople.get(k).getName());
-                        Groups.add(group);
-                        listOfPeople.remove(i);
-                        listOfPeople.remove(j-1);
-                        listOfPeople.remove(k-2);
-                        if(listOfPeople.size() < 3){
-                            break;
+                    for(int q = MAX_WEIGHT; q > 0; q--){
+                        if(canGroup(listOfPeople.get(i),listOfPeople.get(j),listOfPeople.get(k),q,0)){
+                            for(int r = MAX_WEIGHT; r > 0; r--){
+                                if(canGroup(listOfPeople.get(i),listOfPeople.get(j),listOfPeople.get(k),r,1)){
+                                    ArrayList<String> group = new ArrayList<>();
+                                    group.add(listOfPeople.get(i).getName());
+                                    group.add(listOfPeople.get(j).getName());
+                                    group.add(listOfPeople.get(k).getName());
+                                    Groups.add(group);
+                                    listOfPeople.remove(i);
+                                    listOfPeople.remove(j-1);
+                                    listOfPeople.remove(k-2);
+                                    if(listOfPeople.size() < 3){
+                                        break;
+                                    }
+                                    r = 0;
+                                    q = 0;
+                                    i = 0;
+                                    j = 1;
+                                    k = 1;
+                                }
+                            }
                         }
-                    } 
+                    }
                 }
             }
         }

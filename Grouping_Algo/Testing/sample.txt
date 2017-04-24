@@ -6,12 +6,12 @@ Randy Chen
 AM,AT
 JAVA,PYTHON,C
 Cody Babe
-CM,CT,FF
-JAVA,PYTHON,C
-Dat Ass
+AM,AT,CT,FF
+PYTHON,C
+Dat Man
 FSU
 C++
-Jack Hoff
+Jack Frost
 AM,BW,BF,BSU
 JAVA
 Hugh Heffner
@@ -23,24 +23,33 @@ C++,JAVA
 SumTing Wong
 BW,AM,CR,CF,BR
 JAVA,C
-Da Phuc
+Brianna Morris
 FSU,BM,BT,BR,AM,AR,AF
 C++,C
-Dat Bich
+Harold Winston
+AM,AT,AW,AR,ASU,BR,BSU
+C,PYTHON,JAVA
+Larry Page
 ZF
 PHP
-Dat Dong
+Larry King
 ZF
 PHP
-Dat Idiot
+Larry Bird
 ZF
 PHP
 Ho Lee
 AM,BW,CR
 JAVA
-Da Hell
+Angela Ziegler
+AW,BSU,AW,ZF,BF
+C,C++
+Deez Nutz
 AM,BW,CR
 JAVA
 Rob Boss
 AM,BW,CR
 JAVA
+Lena Oxton
+FF,BSU,FSU,AM,ZF,AW,AF,BR,BT
+PHP,JAVA,C,C++

@@ -9,28 +9,45 @@
         <h2>Creating Project Groups Since 2017</h2>
     </div>
 
-    <div id="sliders" style="overflow: hidden; white-space: nowrap" align="center">
-        <input type="range" min="0" max="10" value="0" step="1" onchange="showValue(this.value)" />
-        <span id="range">0</span>
-        <script type="text/javascript">
-        function showValue(newValue)
-        {
-        	document.getElementById("range").innerHTML=newValue;
-        }
-        </script>
-    </div>
-
-    <div id="menuBar" style="overflow: hidden; white-space: nowrap" align="center">
-        <button id="uploadButton">Hey Homie! Click here to Upload CSV File!</button>
-
-    </div>
-    <div id="generateTeams" style="display: none;"align="center">
-
-        <p>Select CSV File</p>
+    <div id="menuBar" style="white-space: nowrap" align="center"><p>Select CSV File</p>
         <input type="file" id="csvFileEntry"/>
-        <button id="generateGroupsButton">Generate Groups, Dawg</button>
-        <div id="groupOutputArea"></div>
     </div>
+
+    <div align="center">
+        <button id="uploadButton">Hey Homie! Click here to Upload the CSV File!</button>
+    </div>
+
+    <div id="generateTeams" style="display: none;" align="center">
+
+        <p>listeners working</p>
+        {% for criterion in session.num_criteria %}
+        <div>{{ criterion }}:
+            <form name="slider">
+                <input type="range" name="ageInputName" id="ageInputId" value="5" min="0" max="10" step="1" oninput="ageOutputId.value = ageInputId.value">
+                <output name="ageOutputName" id="ageOutputId">5</output>
+            </form>
+        </div>
+        {% endfor %}
+        <br>
+        <br>
+        {% if session.criteria_count >0 %}
+        <div align="center">
+            <button id="generateGroupsButton">Generate Groups, Dawg</button>
+        </div>
+        {% endif %}
+    </div>
+
+    <div id="outputArea" style="display: none;" align="center">
+      {% for group in session.groups %}
+      team {{group[0]}}: {{group[1:]}}
+      <br>
+      {% endfor %}
+
+    </div>
+
+    <!--div id="generateTeams" style="" align="center">
+        <div id="groupOutputArea"></div>
+    </div> -->
 
     <div id="errorDisplay" align="center">
         <p id="invalidFileExtensionError" class = "error" style="display: none; color: red">Please select a CSV file</p>

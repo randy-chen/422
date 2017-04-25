@@ -103,5 +103,14 @@ public class grouping{
         for(int i = 0; i < Groups.size(); i++){
             System.out.println(Groups.get(i).toString());
         }
+        try{
+          PrintWriter writer = new PrintWriter(args[1], "UTF-8");
+          for(int i = 0; i < Groups.size(); i++){
+              writer.println(Groups.get(i).toString());
+          }
+          writer.close();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
     }
 }

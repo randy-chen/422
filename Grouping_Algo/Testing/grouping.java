@@ -1,8 +1,8 @@
 import java.util.*;
+import java.io.*;
 
 public class grouping{
-    static Scanner scanner = new Scanner(System.in);
-    
+
     public static int getNumberOfCommonElements(ArrayList<String> list1, ArrayList<String> list2){
         List<String> common = new ArrayList<String>(list1);
         common.retainAll(list2);
@@ -21,17 +21,23 @@ public class grouping{
     }
 
     public static void main(String [] args){
-        int MAX_WEIGHT = 5;
-        int numAttr = Integer.parseInt(scanner.nextLine());
+        File file = new File(args[0]);
         ArrayList<person> listOfPeople = new ArrayList<person>();
-        while(scanner.hasNextLine()){
-            String name = scanner.nextLine();
-            person Person = new person(name);
-            for(int i = 0; i < numAttr; i++){
-                ArrayList<String> list = new ArrayList<String>(Arrays.asList(scanner.nextLine().split(",")));
-                Person.addAttribute(list);
-            }
-            listOfPeople.add(Person);
+        int MAX_WEIGHT = 5;
+        try{
+          Scanner scanner = new Scanner(file);
+          int numAttr = Integer.parseInt(scanner.nextLine());
+          while(scanner.hasNextLine()){
+              String name = scanner.nextLine();
+              person Person = new person(name);
+              for(int i = 0; i < numAttr; i++){
+                  ArrayList<String> list = new ArrayList<String>(Arrays.asList(scanner.nextLine().split(",")));
+                  Person.addAttribute(list);
+              }
+              listOfPeople.add(Person);
+          }
+        } catch(FileNotFoundException e) {
+          e.printStackTrace();
         }
         Collections.sort(listOfPeople, new Comparator<person>() {
                 @Override
@@ -39,7 +45,7 @@ public class grouping{
                     return (person1.totalAvailability() - person2.totalAvailability());
                 }
         });
-        
+
         ArrayList<ArrayList<String>> Groups = new ArrayList<>();
         for(int i = 0; i < listOfPeople.size(); i++){
             for(int j = i+1; j < listOfPeople.size(); j++){

@@ -39,7 +39,7 @@
 
     <div id="outputArea" style="display: none;" align="center">
       {% for group in session.groups %}
-      team {{group[0]}}: {{group[1:]}}
+      Team {{group[0]}}: {{group[1][1:-2]}}
       <br>
       {% endfor %}
 

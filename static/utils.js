@@ -24,8 +24,11 @@ function setupElements(){
 
   outputArea = document.querySelector('#outputArea')
   generateGroupsButton = document.querySelector('#generateGroupsButton')
+  regenerateGroupsButton = document.querySelector('#regenerateGroupsButton')
   generateGroupsButton.addEventListener('click',function(){
     outputArea.style.display = 'block'
+    generateGroupsButton.style.display = 'none'
+    regenerateGroupsButton.style.display = 'block'
   }, false)
   /*sliders = document.querySelector('#sliders')
   uploadButton = document.querySelector('#uploadButton')

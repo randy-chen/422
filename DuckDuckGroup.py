@@ -10,21 +10,13 @@ app.secret_key = "CHARCL"
 @app.route('/', methods=['GET', 'POST'])
 def groups():
     if request.method == 'GET':
+        #CSV of the student survey
+        csv_file = sys.argv[1]
 
-        java = sys.argv[1]
-        javac = sys.argv[2]
-        algorithm_java = sys.argv[3]
-        categories_python = sys.argv[4]
-        reader_python = sys.argv[5]
-        csv_file = sys.argv[6]
-        categories_txt = sys.argv[7]
-        output_txt = sys.argv[8]
-
-
-        subprocess.run(['python3', categories_python, csv_file, '>', categories_txt], stdout=subprocess.PIPE).stdout.decode('utf-8')
-        subprocess.run(['python3', reader_python, csv_file, '>', output_txt], stdout=subprocess.PIPE).stdout.decode('utf-8')
+        subprocess.run(['python3', 'utils/Categories.py', csv_file, '>', 'categories.txt'], stdout=subprocess.PIPE).stdout.decode('utf-8')
+        subprocess.run(['python3', 'utils/CSVReader.py', csv_file, '>', 'output.txt'], stdout=subprocess.PIPE).stdout.decode('utf-8')
         subprocess.check_call(['javac', 'person.java', 'grouping.java'], stdout=subprocess.PIPE)
-        subprocess.run(['java', 'grouping', output_txt, 'final.txt'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        subprocess.run(['java', 'grouping', 'output.txt', 'final.txt'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         print('successfully ran java')
         #return str(result)
         #return render_template('app.html')
@@ -33,7 +25,7 @@ def groups():
         #if request.form["button pressed"] == "displaySliders":
         criteria_list = []
         groups = []
-        categories = open(categories_txt, "r")
+        categories = open('categories.txt', "r")
         print(categories)
         for item in categories:
             criteria_list.append(item)

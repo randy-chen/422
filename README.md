@@ -9,4 +9,4 @@ Then follow these quick directions to get to where you need to go:
 
 >For information on how to extend and use parts of this project, visit docs/future/
 
->For information on our development journey and miscellaneous FAQ, check out docs/process/
+>For information on our development journey and miscellaneous curiosities about this project, check out docs/process/

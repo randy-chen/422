@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
+<title>
+    Duck Duck Groups
+</title>
 <head>
 </head>
 <body>
     <script src="../static/utils.js"></script>
     <div style="overflow: hidden; white-space: nowrap" align="center">
         <h1>Duck Duck Groups</h1>
-        <h2>Creating Project Groups Since 2017</h2>
+        <h2>Creating Project Groups of 3 Since 2017</h2>
     </div>
 
     <div id="menuBar" style="white-space: nowrap" align="center"><p>Select CSV File</p>
@@ -14,12 +17,13 @@
     </div>
 
     <div align="center">
-        <button id="uploadButton">Hey Homie! Click here to Upload the CSV File!</button>
+        <button id="uploadButton">Upload CSV</button>
     </div>
 
     <div id="generateTeams" style="display: none;" align="center">
 
-        <p>listeners working</p>
+        <p>Use the sliders to adjust how much you value a criterion (1:'Trivial criteria', 10:'Of utmost importance')</p>
+        <br>
         {% for criterion in session.num_criteria %}
         <div>{{ criterion }}:
             <form name="slider">
@@ -31,8 +35,9 @@
         <br>
         <br>
         {% if session.criteria_count >0 %}
+            <p>Groups of 3 (with at most two groups of 4)<p></p>
         <div align="center">
-            <button id="generateGroupsButton">Generate Groups, Dawg</button>
+            <button id="generateGroupsButton">Generate Groups</button>
         </div>
         {% endif %}
     </div>
@@ -45,12 +50,8 @@
 
     </div>
     <div id="regenerateGroupsButton" align="center" style="display: none;">
-        <button style="font-size: 80px">Yo, these groups are no bueno. Click here to make new ones!</button>
+        <button style="font-size: 80px">I've adjusted the weights. Regenerate groups.</button>
     </div>
-
-    <!--div id="generateTeams" style="" align="center">
-        <div id="groupOutputArea"></div>
-    </div> -->
 
     <div id="errorDisplay" align="center">
         <p id="invalidFileExtensionError" class = "error" style="display: none; color: red">Please select a CSV file</p>

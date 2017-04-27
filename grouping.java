@@ -1,14 +1,23 @@
+/**
+*   Author: Team CHARCL Industries Incorporated Internationale Limited Closed Squad
+*   Project 1 for CIS 422 at the University of Oregon
+*   "grouping.java" is the algorithmic implmentation and core of our program
+**/
+
 import java.util.*;
 import java.io.*;
 
 public class grouping{
 
+    //Returns the number of common elements between two lists
     public static int getNumberOfCommonElements(ArrayList<String> list1, ArrayList<String> list2){
         List<String> common = new ArrayList<String>(list1);
         common.retainAll(list2);
         return common.size();
     }
 
+    //Returns true if the 3 given person have at least the "weight" number of common elements in the given attribute
+    //Returns false if otherwise
     public static boolean canGroup(person person1, person person2, person person3, int weight, int attribute){
         if(getNumberOfCommonElements(person1.getAttribute(attribute),person2.getAttribute(attribute)) >= weight){
             if(getNumberOfCommonElements(person1.getAttribute(attribute),person3.getAttribute(attribute)) >= weight){
@@ -21,9 +30,13 @@ public class grouping{
     }
 
     public static void main(String [] args){
+        // The first argument will be the inputted txt file
         File file = new File(args[0]);
+        // We then create the list of people
         ArrayList<person> listOfPeople = new ArrayList<person>();
+        // Our initial max weight is 5
         int MAX_WEIGHT = 5;
+        // We read the text file
         try{
           Scanner scanner = new Scanner(file);
           int numAttr = Integer.parseInt(scanner.nextLine());
@@ -39,6 +52,7 @@ public class grouping{
         } catch(FileNotFoundException e) {
           e.printStackTrace();
         }
+        // We then sort the list of people based on their total availability
         Collections.sort(listOfPeople, new Comparator<person>() {
                 @Override
                 public int compare(person person1, person person2){
@@ -46,6 +60,7 @@ public class grouping{
                 }
         });
 
+        // This is where we do the greedy grouping
         ArrayList<ArrayList<String>> Groups = new ArrayList<>();
         for(int i = 0; i < listOfPeople.size(); i++){
             for(int j = i+1; j < listOfPeople.size(); j++){
@@ -77,6 +92,8 @@ public class grouping{
                 }
             }
         }
+
+        //We then just start adding the remaining people to new groups or add them to pre-existing
         while(listOfPeople.size() > 0){
             if(listOfPeople.size() >= 3){
                 ArrayList<String> group = new ArrayList<>();

@@ -1,4 +1,10 @@
+/*
+* This file is some simple javascript to run the UI and will be used in future
+* versions of this project.
+*
+*/
 window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+//This is for the filesystem
 var fs;
 var uploadButton;
 var generateTeams;
@@ -16,6 +22,11 @@ function errorHandler(e) {
 }
 
 function setupElements(){
+  /*
+  * This whole block is so that we can create the button events in the
+  * html UI.
+  *
+  */
   generateTeams = document.querySelector('#generateTeams')
   uploadButton = document.querySelector('#uploadButton')
   uploadButton.addEventListener('click',function(){
@@ -30,20 +41,11 @@ function setupElements(){
     generateGroupsButton.style.display = 'none'
     regenerateGroupsButton.style.display = 'block'
   }, false)
-  /*sliders = document.querySelector('#sliders')
-  uploadButton = document.querySelector('#uploadButton')
-  uploadButton.addEventListener('click',function(){
-    sliders.style.display = 'block'
-  }, false)
-  generateTeams = document.querySelector('#generateTeams')
-  generateGroupsButton = document.querySelector('#generateGroupsButton')
-  generateGroupsButton.addEventListener('click',function(){
-    generateTeams.style.display = 'block'
-  }, false)*/
 }
 
 
 
 document.addEventListener("DOMContentLoaded", function(event){
+    //This executes it when the html loads.
     setupElements();
 });

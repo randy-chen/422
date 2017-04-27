@@ -2531,7 +2531,7 @@ input[type="file"] {
 }
 input[type="range"] {
   display: block;
-  width: 100%;
+  width: 10%;
 }
 select[multiple],
 select[size] {

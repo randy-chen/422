@@ -1,29 +1,34 @@
 <!DOCTYPE html>
-<html>
-<title>
-    Duck Duck Groups
-</title>
+<html lang="en">
 <head>
+  <title>
+      Duck Duck Groups
+  </title>
+  <link href="../static/bootstrap.css" rel="stylesheet">
+  <link href="../static/style.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 </head>
 <body>
     <script src="../static/utils.js"></script>
+    <div class="jumbotron" style="background-color: #99daff; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px" >
     <div style="overflow: hidden; white-space: nowrap" align="center">
-        <h1>Duck Duck Groups</h1>
-        <h2>Creating Project Groups of 3 Since 2017</h2>
+        <h1 class="brand-heading">Duck Duck Groups</h1>
+        <h2 class="brand-heading">Creating Project Groups of 3 Since 2017</h2>
     </div>
 
     <div id="menuBar" style="white-space: nowrap" align="center"><p>Select CSV File</p>
-        <input type="file" id="csvFileEntry"/>
+        <label class="btn btn-primary">
+            Browse&hellip; <input type="file" style="display: none;">
+        </label>
     </div>
+    <br>
 
     <div align="center">
-        <button id="uploadButton">Upload CSV</button>
+        <button id="uploadButton" class="btn btn-success btn-sm">Upload CSV</button>
     </div>
-
     <div id="generateTeams" style="display: none;" align="center">
-
-        <p>Use the sliders to adjust how much you value a criterion (1:'Trivial criteria', 10:'Of utmost importance')</p>
-        <br>
+      <br>
         {% for criterion in session.num_criteria %}
         <div>{{ criterion }}:
             <form name="slider">
@@ -31,31 +36,36 @@
                 <output name="ageOutputName" id="ageOutputId">5</output>
             </form>
         </div>
+
         {% endfor %}
+        <p>Use the sliders above to adjust how much you value a criterion (1:'Trivial criteria', 10:'Of utmost importance')</p>
+
         <br>
         <br>
         {% if session.criteria_count >0 %}
-            <p>Groups of 3 (with at most two groups of 4)<p></p>
         <div align="center">
-            <button id="generateGroupsButton">Generate Groups</button>
+            <button class="btn btn-success btn-sm" id="generateGroupsButton">Generate Groups</button>
         </div>
         {% endif %}
     </div>
 
-    <div id="outputArea" style="display: none;" align="center">
+    <div id="outputArea" class="jumbotron" style="display: none; background-color: #4dbeff; margin-left: 250px; margin-right: 250px; margin-top: 0px; margin-bottom: 15px" align="center">
+      <h3 class="brand-heading">Generated Groups of 3 (up to two groups of 4)</h3>
       {% for group in session.groups %}
+      <br>
       Team {{group[0]}}: {{group[1][1:-2]}}
       <br>
       {% endfor %}
-
     </div>
+    <br>
     <div id="regenerateGroupsButton" align="center" style="display: none;">
-        <button style="font-size: 80px">I've adjusted the weights. Regenerate groups.</button>
+        <button class="btn btn-success btn-sm" style="font-size: 20px">Regenerate groups</button>
     </div>
+    <br>
 
     <div id="errorDisplay" align="center">
         <p id="invalidFileExtensionError" class = "error" style="display: none; color: red">Please select a CSV file</p>
     </div>
-
+</div>
 </body>
 </html>
